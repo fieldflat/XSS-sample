@@ -20,8 +20,9 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		return
 	}
-	_, err := r.Cookie("sid")
-	if err != nil {
+	cookie, err := r.Cookie("sid")
+	_, ok := users[cookie.Value]
+	if err != nil || !ok {
 		t, err := template.ParseFiles("login.html")
 		if err != nil {
 			panic(err.Error())
